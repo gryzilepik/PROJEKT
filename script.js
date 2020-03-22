@@ -127,7 +127,10 @@ function dobazy()
     clearInterval(animacja3);
     clearInterval(animacja2);
     clearInterval(animacja);
-    koniec  = prompt("Przegrana, twój wynik to: "+wynik+"\nPodaj nazwę gracza:", "Nazwa gracza"); 
+    koniec  = prompt("Przegrana, twój wynik to: "+wynik+"\nPodaj nazwę gracza:", "Nazwa gracza");
+    var polaczenie = new XMLHttpRequest();
+    polaczenie.open("GET", "zapis.php?nazwa=koniec&ilosc=wynik");
+    polaczenie.send();   
     nowaGra();
 }
 
