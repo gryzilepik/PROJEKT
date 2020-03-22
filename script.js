@@ -201,8 +201,3 @@ function jedzenie()
 //	jablko.style.transform = "rotate("+o+"deg)";
 //	o+=10;
 //}
-
-
-
-
-
