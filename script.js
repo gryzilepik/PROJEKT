@@ -112,24 +112,25 @@ function kolizja()
         plansza.style.border = "1px solid black";
 		if((robak.offsetTop - plansza.offsetTop < 1 && strona == "GORA") || (robak.offsetLeft - plansza.offsetLeft < 1 && strona == "LEWO") || (plansza.offsetHeight + plansza.offsetTop - robak.offsetTop <= 1 && strona == "DOL") || (plansza.offsetWidth + plansza.offsetLeft - robak.offsetLeft <= 1 && strona == "PRAWO"))
 		{
-			clearInterval(animacja3);
-			clearInterval(animacja2);
-			clearInterval(animacja);
-			koniec  = prompt("Przegrana, twój wynik to: "+wynik+"\nPodaj nazwę gracza:", "Nazwa gracza"); 
-			nowaGra();
+			dobazy();
 		}
 	}
 	for(i=1; i<el.length; i++)
 		if (el[i].offsetTop == robak.offsetTop && el[i].offsetLeft == robak.offsetLeft)
 		{
-			clearInterval(animacja3);
-			clearInterval(animacja2);
-			clearInterval(animacja);
-			koniec  = prompt("Przegrana, twój wynik to: "+wynik+"\nPodaj nazwę gracza:", "Nazwa gracza");		
-			nowaGra();
+			dobazy();
 		}
 }
   
+function dobazy()
+{
+    clearInterval(animacja3);
+    clearInterval(animacja2);
+    clearInterval(animacja);
+    koniec  = prompt("Przegrana, twój wynik to: "+wynik+"\nPodaj nazwę gracza:", "Nazwa gracza"); 
+    nowaGra();
+}
+
 function randomJablko()
 {  
 	
@@ -201,3 +202,8 @@ function jedzenie()
 //	jablko.style.transform = "rotate("+o+"deg)";
 //	o+=10;
 //}
+
+
+
+
+
