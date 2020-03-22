@@ -131,7 +131,7 @@ function dobazy()
     var polaczenie = new XMLHttpRequest();
     polaczenie.open("GET", "zapis.php?nazwa=koniec&ilosc=wynik");
     polaczenie.send();
-    polaczenie.onreadystatechange =function {
+    polaczenie.onreadystatechange =function(){
         if(polaczenie.readyState ==4 && polaczenie.status == 200)
             console.log(polaczenie.response);
     };
