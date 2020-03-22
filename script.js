@@ -130,7 +130,11 @@ function dobazy()
     koniec  = prompt("Przegrana, twój wynik to: "+wynik+"\nPodaj nazwę gracza:", "Nazwa gracza");
     var polaczenie = new XMLHttpRequest();
     polaczenie.open("GET", "zapis.php?nazwa=koniec&ilosc=wynik");
-    polaczenie.send();   
+    polaczenie.send();
+    polaczenie.onreadystatechange =function {
+        if(polaczenie.readyState ==4 && polaczenie.status == 200)
+            console.log(polaczenie.response);
+    };
     nowaGra();
 }
 
