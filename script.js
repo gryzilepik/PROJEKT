@@ -129,7 +129,7 @@ function dobazy()
     clearInterval(animacja);
     koniec  = prompt("Przegrana, twój wynik to: "+wynik+"\nPodaj nazwę gracza:", "Nazwa gracza");
     var polaczenie = new XMLHttpRequest();
-    polaczenie.open("GET", "zapis.php?nazwa=koniec&ilosc=wynik");
+    polaczenie.open("GET", "zapis.php?nazwa_gracza=koniec&wynik=wynik");
     polaczenie.send();
     polaczenie.onreadystatechange =function(){
         if(polaczenie.readyState ==4 && polaczenie.status == 200)
