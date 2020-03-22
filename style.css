@@ -1,0 +1,104 @@
+body{
+	margin: 0;
+	background-color: #CCFF66;
+}
+#plansza{
+	width: 600px;
+	height: 600px;
+	border: 1px solid black;
+    position: static;
+    margin: auto;
+	margin-top:30px;
+    background-color: lightgreen;
+	border-radius: 10px;
+}
+
+#wonsz{
+    width:30px;
+	height:30px;
+    background-color: black;
+    position: absolute;
+    margin : 0;
+	border-radius: 20px; 
+}
+
+#jablko{
+    width: 30px;
+    height: 30px;
+    background-image: url("jablko2.png");
+    margin: 0;
+    position: absolute;
+}
+
+.ogon{
+	width:30px;
+	height:30px;
+    background-color: black;
+    position: absolute;
+    margin: auto; 
+	
+}
+label{
+	margin-left: 10px;
+	font-size: 20px;
+	font-family: Verdana;
+	font-weight: bold;
+	
+}
+input{
+	background-color: #33FF99;
+	border: 2px solid black;
+	border-radius: 5px;
+	height: 30px;
+	font-size: 20px;
+	font-style: italic;
+	font-weight: bold;
+	text-align: center;
+}
+input:focus{
+	background-color: #00CC66;
+	text-decoration: underline;
+}
+select{
+	background-color: #33FF99;
+	border: 2px solid black;
+	border-radius: 5px;
+	height: 30px;
+	font-size: 20px;
+	font-style: italic;
+	font-weight: bold;
+	cursor: pointer;
+}
+
+input[type="checkbox"]{
+	cursor: pointer;
+	width: 30px;
+	height: 30px;
+	top: 10px;
+    position: relative;
+}
+
+select:focus{
+	background-color: #00CC66;
+	text-decoration: underline;
+}
+button{
+	border: 2px solid black;
+	border-radius: 5px;
+	background-color: red;
+	height: 30px;
+	font-size: 20px;
+	margin-left:10px;
+	font-style: italic;
+	font-weight: bold;
+	cursor: pointer;
+}
+
+#licznik{
+	float: left;
+	left: 50%;
+	position: relative;
+	font-weight: bold;
+	font-size: 20px;
+	cursor: pointer;
+}
