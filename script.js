@@ -128,7 +128,7 @@ function dobazy()
     clearInterval(animacja2);
     clearInterval(animacja);
     koniec  = prompt("Przegrana, twój wynik to: "+wynik+"\nPodaj nazwę gracza:", "Nazwa gracza");
-    if(koniec!="" || koniec!="NULL")
+    if(koniec != null)
     {
         var polaczenie = new XMLHttpRequest();
         polaczenie.open("GET", "zapis.php?nazwa_gracza="+koniec+"&wynik="+wynik);
