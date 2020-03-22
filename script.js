@@ -139,7 +139,8 @@ function dobazy()
         };
         nowaGra();
     }
-    nowaGra();
+    else
+        nowaGra();
 }
 
 function randomJablko()
