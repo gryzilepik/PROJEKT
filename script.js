@@ -91,6 +91,7 @@ function nowaGra()
     animacja3 = setInterval(jedzenie, 150 / szybkosc.value);
     randomJablko();
 	main.appendChild(licznik);	
+    ranking();
 }
 
 function kolizja() 
@@ -147,8 +148,10 @@ function ranking()
 {
    var polaczenie2 = new XMLHttpRequest();
     polaczenie2.onreadystatechange  =function(){
-        rank = document.createElement('ol');
-        body.appendChild(rank);
+        rank = document.createElement('div');
+        rank.id = "rank";
+        document.body.appendChild(rank);
+        rank.innerHTML=polaczenie2.response;
     }
         polaczenie2.open("GET", "odczyt.php");
         polaczenie2.send();
