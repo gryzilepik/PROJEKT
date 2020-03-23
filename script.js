@@ -67,6 +67,7 @@ function kierunki()
 
 function nowaGra()
 {	
+    ranking();
 	wynik = 0;
 	licznik.innerHTML = wynik;
 	clearInterval(animacja);
@@ -94,7 +95,6 @@ function nowaGra()
     animacja3 = setInterval(jedzenie, 150 / szybkosc.value);
     randomJablko();
 	main.appendChild(licznik);	
-    ranking();
 }
 
 function kolizja() 
@@ -150,12 +150,12 @@ function dobazy()
 function ranking()
 {
    var polaczenie2 = new XMLHttpRequest();
+    polaczenie2.open("GET", "odczyt.php");
+    polaczenie2.send();
     polaczenie2.onreadystatechange  =function(){
         if(polaczenie2.readyState ==4 && polaczenie2.status == 200)
             rank.innerHTML=polaczenie2.response;
-    }
-        polaczenie2.open("GET", "odczyt.php");
-        polaczenie2.send();
+    }       
 }
 
 function randomJablko()
