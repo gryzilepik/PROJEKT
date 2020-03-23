@@ -143,6 +143,17 @@ function dobazy()
         nowaGra();
 }
 
+function ranking()
+{
+   var polaczenie2 = new XMLHttpRequest();
+    polaczenie2.onreadystatechange  =function(){
+        rank = document.createElement('ol');
+        body.appendChild(rank);
+    }
+        polaczenie2.open("GET", "odczyt.php");
+        polaczenie2.send();
+}
+
 function randomJablko()
 {  
 	
