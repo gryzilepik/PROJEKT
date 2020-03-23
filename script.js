@@ -8,6 +8,9 @@ stworz.addEventListener("click", nowaGra);
 plansza = document.createElement('div');
 licznik = document.createElement('p');
 licznik.id = "licznik";
+rank = document.createElement('div');
+rank.id = "rank";
+document.body.appendChild(rank);
 });
 function ruch(event)
 {    
@@ -148,10 +151,8 @@ function ranking()
 {
    var polaczenie2 = new XMLHttpRequest();
     polaczenie2.onreadystatechange  =function(){
-        rank = document.createElement('div');
-        rank.id = "rank";
-        document.body.appendChild(rank);
-        rank.innerHTML=polaczenie2.response;
+        if(polaczenie2.readyState ==4 && polaczenie2.status == 200)
+            rank.innerHTML=polaczenie2.response;
     }
         polaczenie2.open("GET", "odczyt.php");
         polaczenie2.send();
