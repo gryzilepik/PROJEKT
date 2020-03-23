@@ -142,6 +142,7 @@ function dobazy()
                 console.log(polaczenie.response);
         };
         nowaGra();
+        ranking();
     }
     else
         nowaGra();
