@@ -10,7 +10,6 @@ licznik = document.createElement('p');
 licznik.id = "licznik";
 rank = document.createElement('div');
 rank.id = "rank";
-document.body.appendChild(rank);
 });
 function ruch(event)
 {    
@@ -94,7 +93,8 @@ function nowaGra()
     animacja2 = setInterval(kolizja, 150 / szybkosc.value);
     animacja3 = setInterval(jedzenie, 150 / szybkosc.value);
     randomJablko();
-	main.appendChild(licznik);	
+	main.appendChild(licznik);
+    document.body.appendChild(rank);
 }
 
 function kolizja() 
@@ -162,8 +162,10 @@ function ranking()
 function randomJablko()
 {  
 	
-	y =parseInt(Math.random()*plansza.offsetHeight/grubosc.value)*grubosc.value+plansza.offsetTop+plansza.offsetParent.offsetTop+1;
-	x =parseInt(Math.random()*plansza.offsetWidth/grubosc.value)*grubosc.value+plansza.offsetLeft+plansza.offsetParent.offsetLeft+1;
+	//y =parseInt(Math.random()*plansza.offsetHeight/grubosc.value)*grubosc.value+plansza.offsetTop+plansza.offsetParent.offsetTop+1;
+    y = parseInt(Math.random()*wielkosc.value/grubosc.value)*grubosc.value + plansza.offsetTop+1;
+	//x =parseInt(Math.random()*plansza.offsetWidth/grubosc.value)*grubosc.value+plansza.offsetLeft+plansza.offsetParent.offsetLeft+1;
+    x = parseInt(Math.random()*wielkosc.value/grubosc.value)*grubosc.value + plansza.offsetLeft+1;
 	jablko = document.createElement('div');
 	jablko.id = "jablko";
 	jablko.style.top = y + "px";

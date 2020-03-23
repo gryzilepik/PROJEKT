@@ -106,6 +106,7 @@ button{
 #rank{
     float:left;
     border: 1px solid black;
+    width: 400px;
 }
 #rank td{
    border: 1px solid black; 
