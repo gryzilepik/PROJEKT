@@ -103,9 +103,9 @@ button{
 	cursor: pointer;
 }
 
-#rank{
-    float:left;
+#rank table{
     border: 1px solid black;
+    height: 200px;
     width: 400px;
 }
 #rank td{

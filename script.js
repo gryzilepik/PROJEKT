@@ -141,11 +141,15 @@ function dobazy()
             if(polaczenie.readyState ==4 && polaczenie.status == 200)
                 console.log(polaczenie.response);
         };
-        nowaGra();
         ranking();
+        nowaGra();
+        
     }
     else
+    {
+        ranking();
         nowaGra();
+    }
 }
 
 function ranking()
@@ -213,7 +217,7 @@ function jedzenie()
     {
 		robak.style.top+=grubosc.value+"px";
 		jablko.remove();
-		wynik++;
+		wynik+=5;
 		licznik.innerHTML = wynik;
 		ogon = document.createElement('div');
 		ogon.className = 'ogon';
