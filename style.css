@@ -1,25 +1,36 @@
-body{
-	margin: 0;
-	background-color: #CCFF66;
+
+html, body{
+	margin: 0 auto;
+	background-color: #9bba5a;
+    position: absolute;
+    width: 100vw;
+    overflow-x:hidden;
+    overflow-y:hidden;
+    height: 100%;
+    
 }
 #plansza{
-	width: 600px;
-	height: 600px;
-	border: 1px solid black;
+	width: 50%;
+	height: auto;
+	border: 3px solid black;
     position: static;
     margin: auto;
 	margin-top:30px;
-    background-color: lightgreen;
+    background-color: #227A10;
 	border-radius: 10px;
+    float: left;
+    box-shadow:0 0 10px 1px black;
 }
 
 #wonsz{
     width:30px;
 	height:30px;
-    background-color: black;
+    background-color: #112B08;
     position: absolute;
-    margin : 0;
-	border-radius: 20px; 
+    margin: 0;
+    border-radius: 10px;
+    box-shadow:0 0 6px white;
+   
 }
 
 #jablko{
@@ -28,25 +39,32 @@ body{
     background-image: url("jablko2.png");
     margin: 0;
     position: absolute;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .ogon{
 	width:30px;
 	height:30px;
-    background-color: black;
+    background-color: #112B08;
     position: absolute;
-    margin: auto; 
+    margin: 0;     
+    box-shadow:0 0 6px white;
+    border-radius: 10px;
+    
 	
 }
 label{
 	margin-left: 10px;
-	font-size: 20px;
-	font-family: Verdana;
+	font-size: 25px;
+	font-family: Courier New;
 	font-weight: bold;
+    text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
+    color: #F7DF07;
 	
 }
 input{
-	background-color: #33FF99;
+	background-color: #F7DF07;
 	border: 2px solid black;
 	border-radius: 5px;
 	height: 30px;
@@ -60,7 +78,7 @@ input:focus{
 	text-decoration: underline;
 }
 select{
-	background-color: #33FF99;
+	background-color: #F7DF07;
 	border: 2px solid black;
 	border-radius: 5px;
 	height: 30px;
@@ -95,20 +113,62 @@ button{
 }
 
 #licznik{
-	float: left;
+    position: relative;
 	left: 50%;
-	position: relative;
 	font-weight: bold;
 	font-size: 20px;
 	cursor: pointer;
+    clear: both;
 }
 
-#rank table{
-    border: 1px solid black;
-    height: 200px;
-    width: 400px;
+#rank{
+    height: auto;
+    width: 50%;
+    margin: 30px;
+    position: absolute;
+    left: 80%;
+    top: 25px;
+    
 }
-#rank td{
-   border: 1px solid black; 
+
+#tab_rank{
+    border: 3px solid black;
+    width: 30%;
+    background-color: #F7DF07;
+    height: 100%;
+    border-bottom-left-radius: 50px;
+    border-bottom-right-radius: 50px;
+    border-top: none;
+    font-family: Lucida Console;
+    box-shadow:0 3px 5px 1px black;
+    
 }
+#tab_rank td{
+    border-top: 1px solid black; 
+    text-align: center;
+}
+
+nav{
+    position: relative;
+    margin: 0 auto;
+    width: 100vw;
+    text-align: center;
+    background-color: #59411C;
+    height: 55px;
+    border-bottom-left-radius: 50px;
+    border-bottom-right-radius: 50px;
+    border-bottom: 5px solid black;
+}
+main{
+    width: 100vw;
+    margin: 0 auto;
+    padding-left: 30%;
+}
+#w{
+    height: 30px;
+    text-align: center;
+    font-size: 20px;
+    border-top: 5px solid black;
+}
+
 
