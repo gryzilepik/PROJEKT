@@ -47,7 +47,7 @@ function p1_ruch(event)
 function p2_ruch(event)
 {    
     var klawisz = event.key; 
-    if (klawisz == 'a' && strona_p2 != "PRAWO" && czy_moze_zmienic_kierunek_p2 == true)
+    if (klawisz == 'ArrowLeft' && strona_p2 != "PRAWO" && czy_moze_zmienic_kierunek_p2 == true)
     {
         strona_p2 = "LEWO";
         kierunek_p2X = -30;
@@ -55,21 +55,21 @@ function p2_ruch(event)
         czy_moze_zmienic_kierunek_p2 = false;
         
     }
-    else if (klawisz == 's' && strona_p2 != "GORA" && czy_moze_zmienic_kierunek_p2 == true)
+    else if (klawisz == 'ArrowDown' && strona_p2 != "GORA" && czy_moze_zmienic_kierunek_p2 == true)
     {
         strona_p2 = "DOL";
         kierunek_p2Y = 30;  
         kierunek_p2X = 0; 
         czy_moze_zmienic_kierunek_p2 = false;       
     }
-    else if (klawisz == 'd' && strona_p2 != "LEWO" && czy_moze_zmienic_kierunek_p2 == true)
+    else if (klawisz == 'ArrowRight' && strona_p2 != "LEWO" && czy_moze_zmienic_kierunek_p2 == true)
     {
         strona_p2 = "PRAWO";
         kierunek_p2X = 30; 
         kierunek_p2Y = 0;
         czy_moze_zmienic_kierunek_p2 = false;
     }
-    else if (klawisz == 'w' && strona_p2 != "DOL" && czy_moze_zmienic_kierunek_p2 == true)
+    else if (klawisz == 'ArrowUp' && strona_p2 != "DOL" && czy_moze_zmienic_kierunek_p2 == true)
     {
         strona_p2 = "GORA"; 
         kierunek_p2Y = -30;  
