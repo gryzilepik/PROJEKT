@@ -23,6 +23,25 @@ html,body{
     box-shadow:0 0 10px 1px black;
 }
 
+#p1{
+    width:30px;
+    height: 30px;
+    background-color: #112B08;
+    position: absolute;
+    margin: 0;
+    border-radius: 10px;
+}
+
+#p2{
+    width:30px;
+    height: 30px;
+    background-color: #112B08;
+    position: absolute;
+    margin: 0;
+    border-radius: 10px;
+    left:1249px;
+}
+
 #main{
     width: 100vw;
     margin: 0 auto;
