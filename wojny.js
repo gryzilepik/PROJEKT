@@ -1,4 +1,4 @@
-let p1, p2, plansza, jablko, strona_p1, strona_p2, kierunek_p1Y, kierunek_p2Y, kierunek_p1X, kierunek_p2X, czy_moze_zmienic_kierunek_p1, czy_moze_zmienic_kierunek_p2, animacja;
+let p1, p2, plansza, jablko, strona_p1, strona_p2, kierunek_p1Y, kierunek_p2Y, kierunek_p1X, kierunek_p2X, czy_moze_zmienic_kierunek_p1, czy_moze_zmienic_kierunek_p2, animacja, animacja2;
 
 document.addEventListener("DOMContentLoaded", function(){ 
     
@@ -92,10 +92,14 @@ function kierunki()
     p2.style.left = left_p2+kierunek_p2X+"px";
     czy_moze_zmienic_kierunek_p1 = true;
     czy_moze_zmienic_kierunek_p2 = true;
+    console.log(p2.style.left);
+    console.log(p1.style.left);
 }  
 
 function nowaGra()
 {
+    clearInterval(animacja);
+    clearInterval(animacja2);
     kierunek_p1X = 0;
     kierunek_p2X = 0;
     kierunek_p1Y = 0;
@@ -107,24 +111,22 @@ function nowaGra()
     document.addEventListener('keydown', p1_ruch);
     document.addEventListener('keydown', p2_ruch);
     plansza.id = "plansza";
-    main.appendChild(plansza);   
+    main.appendChild(plansza);
     p1 = document.createElement('div');
     p1.id = "p1";
     plansza.appendChild(p1);
     p2 = document.createElement('div');
     p2.id = "p2";
-    p2.style.left = plansza.offsetLeft + plansza.offsetWidth - 34;
-    p2.style.top = plansza.offsetTop + plansza.offsetHeight - 34;
+    p2.style.left = plansza.offsetLeft + plansza.offsetWidth - 33;
+    p2.style.top = plansza.offsetTop + plansza.offsetHeight - 33;
     plansza.appendChild(p2);
 }
 
 function kolizja()
 {
-    if((p1.offsetTop - plansza.offsetTop < 3 && strona_p1 == "GORA") || (p1.offsetLeft - plansza.offsetLeft < 3 && strona_p1 == "LEWO") || (plansza.offsetHeight + plansza.offsetTop - p1.offsetTop < 3 && strona_p1 == "DOL") || (plansza.offsetWidth + plansza.offsetLeft - p1.offsetLeft < 3 && strona_p1 == "PRAWO"))
+    if((p1.offsetTop - plansza.offsetTop < 3 && strona_p1 == "GORA") || (p1.offsetLeft - plansza.offsetLeft < 3 && strona_p1 == "LEWO") || (plansza.offsetHeight + plansza.offsetTop - p1.offsetTop <= 3 && strona_p1 == "DOL") || (plansza.offsetWidth + plansza.offsetLeft - p1.offsetLeft <= 3 && strona_p1 == "PRAWO"))
     {
-        alert("Gracz czerwony chciał uciec z pola bitwy.");
-        clearInterval(animacja);
-        clearInterval(animacja2);
+        alert("Gracz czerwony chciał uciec z pola bitwy.");    
         p1.remove();
         p2.remove();
         nowaGra();
@@ -132,8 +134,6 @@ function kolizja()
     else if((p2.offsetTop - plansza.offsetTop < 3 && strona_p2 == "GORA") || (p2.offsetLeft - plansza.offsetLeft < 3 && strona_p2 == "LEWO") || (plansza.offsetHeight + plansza.offsetTop - p2.offsetTop <= 3 && strona_p2 == "DOL") || (plansza.offsetWidth + plansza.offsetLeft - p2.offsetLeft <= 3 && strona_p2 == "PRAWO"))
     {
         alert("Gracz zielony chciał uciec z pola bitwy.")
-        clearInterval(animacja);
-        clearInterval(animacja2);
         p1.remove();
         p2.remove();
         nowaGra();
