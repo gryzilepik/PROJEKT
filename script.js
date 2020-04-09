@@ -186,12 +186,12 @@ function kolizja()
 
 function randomJablko()
 {  
-	
-	//y =parseInt(Math.random()*plansza.offsetHeight/grubosc.value)*grubosc.value+plansza.offsetTop+plansza.offsetParent.offsetTop+1;
+
     y = parseInt(Math.random()*wielkosc.value/grubosc.value)*grubosc.value + plansza.offsetTop+3;
-	//x =parseInt(Math.random()*plansza.offsetWidth/grubosc.value)*grubosc.value+plansza.offsetLeft+plansza.offsetParent.offsetLeft+1;
+	
     x = parseInt(Math.random()*wielkosc.value/grubosc.value)*grubosc.value + plansza.offsetLeft+3;
     //sprawdz();
+    
 	jablko = document.createElement('div');
 	jablko.id = "jablko";
 	jablko.style.top = y + "px";

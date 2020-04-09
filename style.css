@@ -55,7 +55,7 @@ html, body{
     
 	
 }
-label{
+label, nav em{
 	margin-left: 10px;
 	font-size: 25px;
 	font-family: Courier New;
@@ -64,6 +64,16 @@ label{
     color: /*#F7DF07;*/ #ECBA09;
 	
 }
+
+nav em{
+    font-size: 40px;
+    float:left;
+    margin-left: 30px;
+    margin-top: 5px;
+    border-right: 5px solid #ECBA09;
+    padding-right: 15px;
+}
+
 input{
 	background-color: #F7DF07;
 	border: 2px solid black;
