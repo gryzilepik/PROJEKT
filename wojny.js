@@ -97,6 +97,7 @@ function kierunki()
 function nowaGra()
 {
     animacja = setInterval(kierunki, 150);
+    animacja2 = setInterval(kolizja, 150);
     document.addEventListener('keydown', p1_ruch);
     document.addEventListener('keydown', p2_ruch);
     plansza.id = "plansza";
@@ -107,5 +108,17 @@ function nowaGra()
     p2 = document.createElement('div');
     p2.id = "p2";
     plansza.appendChild(p2);
+}
+
+function kolizja()
+{
+    if((p1.offsetTop - plansza.offsetTop < 3 && strona_p1 == "GORA") || (p1.offsetLeft - plansza.offsetLeft < 3 && strona_p1 == "LEWO") || (plansza.offsetHeight + plansza.offsetTop - p1.offsetTop <= 3 && strona_p1 == "DOL") || (plansza.offsetWidth + plansza.offsetLeft - p1.offsetLeft <= 3 && strona_p1 == "PRAWO"))
+    {
+        alert("Gracz czerwony chciał uciec z pola bitwy.");
+    }
+    else if((p2.offsetTop - plansza.offsetTop < 3 && strona_p2 == "GORA") || (p2.offsetLeft - plansza.offsetLeft < 3 && strona_p2 == "LEWO") || (plansza.offsetHeight + plansza.offsetTop - p2.offsetTop <= 3 && strona_p2 == "DOL") || (plansza.offsetWidth + plansza.offsetLeft - p2.offsetLeft <= 3 && strona_p2 == "PRAWO"))
+    {
+        alert("Gracz zielony chciał uciec z pola bitwy.")
+    }
 }
 
