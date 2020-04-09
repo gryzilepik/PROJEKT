@@ -3,7 +3,10 @@ let p1, p2, plansza, jablko;
 function nowaGra()
 {
     plansza = document.createElement('div');
-    body.appendChild(plansza);
+    document.body.appendChild(plansza);
     plansza.id = "plansza";
-    p1 = p
+    p1 = document.createElement('div');
+    plansza.appendChild(p1);
+    p2 = document.createElement('div');
+    plansza.appendChild(p2);
 }

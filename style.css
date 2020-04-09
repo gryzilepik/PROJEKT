@@ -170,7 +170,7 @@ nav{
     border-bottom-right-radius: 50px;
     border-bottom: 5px solid #ECBA09;
 }
-main{
+#main{
     width: 100vw;
     margin: 0 auto;
     padding-left: 30%;
