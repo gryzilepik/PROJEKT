@@ -1,4 +1,4 @@
-let p1, p2, plansza, jablko, strona_p1, kierunek_p1Y, kierunek_p1X, czy_moze_zmienic_kierunek_p1
+let p1, p2, plansza, jablko, strona_p1, strona_p2, kierunek_p1Y, kierunek_p2Y, kierunek_p1X, kierunek_p2X, czy_moze_zmienic_kierunek_p1, czy_moze_zmienic_kierunek_p2, animacja;
 
 document.addEventListener("DOMContentLoaded", function(){ 
     
@@ -7,17 +7,7 @@ document.addEventListener("DOMContentLoaded", function(){
     
 });
 
-function nowaGra()
-{
-    plansza.id = "plansza";
-    main.appendChild(plansza);   
-    p1 = document.createElement('div');
-    p1.id = "p1";
-    plansza.appendChild(p1);
-    p2 = document.createElement('div');
-    p2.id = "p2";
-    plansza.appendChild(p2);
-}
+
 
 function p1_ruch(event)
 {    
@@ -54,13 +44,68 @@ function p1_ruch(event)
     
 }
 
-let animacja =setInterval(kierunki, 150);
+function p2_ruch(event)
+{    
+    var klawisz = event.key; 
+    if (klawisz == 'a' && strona_p2 != "PRAWO" && czy_moze_zmienic_kierunek_p2 == true)
+    {
+        strona_p2 = "LEWO";
+        kierunek_p2X = -30;
+        kierunek_p2Y = 0;
+        czy_moze_zmienic_kierunek_p2 = false;
+        
+    }
+    else if (klawisz == 's' && strona_p2 != "GORA" && czy_moze_zmienic_kierunek_p2 == true)
+    {
+        strona_p2 = "DOL";
+        kierunek_p2Y = 30;  
+        kierunek_p2X = 0; 
+        czy_moze_zmienic_kierunek_p2 = false;       
+    }
+    else if (klawisz == 'd' && strona_p2 != "LEWO" && czy_moze_zmienic_kierunek_p2 == true)
+    {
+        strona_p2 = "PRAWO";
+        kierunek_p2X = 30; 
+        kierunek_p2Y = 0;
+        czy_moze_zmienic_kierunek_p2 = false;
+    }
+    else if (klawisz == 'w' && strona_p2 != "DOL" && czy_moze_zmienic_kierunek_p2 == true)
+    {
+        strona_p2 = "GORA"; 
+        kierunek_p2Y = -30;  
+        kierunek_p2X = 0; 
+        czy_moze_zmienic_kierunek_p2 = false;      
+    }
+    
+}
+
+
 function kierunki()
-{   
-    let top = p1.offsetTop;
-    let left = p1.offsetLeft;  
-    p1.style.top = top+kierunek_p1Y+"px";
-    p1.style.left = left+kierunek_p1X+"px";
+{ 
+    let top_p2 = p2.offsetTop;
+    let left_p2 = p2.offsetLeft;
+    let top_p1 = p1.offsetTop;
+    let left_p1 = p1.offsetLeft;  
+    p1.style.top = top_p1+kierunek_p1Y+"px";
+    p1.style.left = left_p1+kierunek_p1X+"px";
+    p2.style.top = top_p2+kierunek_p2Y+"px";
+    p2.style.left = left_p2+kierunek_p2X+"px";
     czy_moze_zmienic_kierunek_p1 = true;
+    czy_moze_zmienic_kierunek_p2 = true;
 }  
+
+function nowaGra()
+{
+    animacja = setInterval(kierunki, 150);
+    document.addEventListener('keydown', p1_ruch);
+    document.addEventListener('keydown', p2_ruch);
+    plansza.id = "plansza";
+    main.appendChild(plansza);   
+    p1 = document.createElement('div');
+    p1.id = "p1";
+    plansza.appendChild(p1);
+    p2 = document.createElement('div');
+    p2.id = "p2";
+    plansza.appendChild(p2);
+}
 
