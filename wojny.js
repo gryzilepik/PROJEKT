@@ -96,6 +96,12 @@ function kierunki()
 
 function nowaGra()
 {
+    kierunek_p1X = 0;
+    kierunek_p2X = 0;
+    kierunek_p1Y = 0;
+    kierunek_p2Y = 0;
+    strona_p1 = "";
+    strona_p2 = "";
     animacja = setInterval(kierunki, 150);
     animacja2 = setInterval(kolizja, 150);
     document.addEventListener('keydown', p1_ruch);
@@ -107,18 +113,30 @@ function nowaGra()
     plansza.appendChild(p1);
     p2 = document.createElement('div');
     p2.id = "p2";
+    p2.style.left = plansza.offsetLeft + plansza.offsetWidth - 34;
+    p2.style.top = plansza.offsetTop + plansza.offsetHeight - 34;
     plansza.appendChild(p2);
 }
 
 function kolizja()
 {
-    if((p1.offsetTop - plansza.offsetTop < 3 && strona_p1 == "GORA") || (p1.offsetLeft - plansza.offsetLeft < 3 && strona_p1 == "LEWO") || (plansza.offsetHeight + plansza.offsetTop - p1.offsetTop <= 3 && strona_p1 == "DOL") || (plansza.offsetWidth + plansza.offsetLeft - p1.offsetLeft <= 3 && strona_p1 == "PRAWO"))
+    if((p1.offsetTop - plansza.offsetTop < 3 && strona_p1 == "GORA") || (p1.offsetLeft - plansza.offsetLeft < 3 && strona_p1 == "LEWO") || (plansza.offsetHeight + plansza.offsetTop - p1.offsetTop < 3 && strona_p1 == "DOL") || (plansza.offsetWidth + plansza.offsetLeft - p1.offsetLeft < 3 && strona_p1 == "PRAWO"))
     {
         alert("Gracz czerwony chciał uciec z pola bitwy.");
+        clearInterval(animacja);
+        clearInterval(animacja2);
+        p1.remove();
+        p2.remove();
+        nowaGra();
     }
     else if((p2.offsetTop - plansza.offsetTop < 3 && strona_p2 == "GORA") || (p2.offsetLeft - plansza.offsetLeft < 3 && strona_p2 == "LEWO") || (plansza.offsetHeight + plansza.offsetTop - p2.offsetTop <= 3 && strona_p2 == "DOL") || (plansza.offsetWidth + plansza.offsetLeft - p2.offsetLeft <= 3 && strona_p2 == "PRAWO"))
     {
         alert("Gracz zielony chciał uciec z pola bitwy.")
+        clearInterval(animacja);
+        clearInterval(animacja2);
+        p1.remove();
+        p2.remove();
+        nowaGra();
     }
 }
 
