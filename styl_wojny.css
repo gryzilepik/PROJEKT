@@ -13,12 +13,43 @@ html,body{
 #plansza{
     width: 700px;
     height: 700px;
+	border: 3px solid black;
     position: static;
-    position: static;
+    margin: auto;
+	margin-top:30px;
+    background-color: #227A10;
+	border-radius: 10px;
+    float: left;
+    box-shadow:0 0 10px 1px black;
 }
 
 #main{
     width: 100vw;
     margin: 0 auto;
     padding-left: 30%;
+}
+
+nav{
+    position: relative;
+    margin: 0 auto;
+    width: 100vw;
+    text-align: center;
+    background-color: /*#59411C;*/ #1B1521;
+    height: 55px;
+    border-bottom-left-radius: 50px;
+    border-bottom-right-radius: 50px;
+    border-bottom: 5px solid #ECBA09;
+}
+
+button{
+	border: 2px solid black;
+	border-radius: 5px;
+	background-color: red;
+	height: 30px;
+	font-size: 20px;
+	margin-left:10px;
+    margin-top:10px;
+	font-style: italic;
+	font-weight: bold;
+	cursor: pointer;
 }
