@@ -66,7 +66,7 @@ function nowy_ogon()
 
 function kierunki()
 {   
-	
+	nowy_ogon();
     let top = robak.offsetTop;
     let left = robak.offsetLeft;  
     robak.style.top = top+kierunekY+"px";
@@ -111,11 +111,9 @@ function ranking()
 
 function nowaGra()
 {       
-        ranking();
         clearInterval(animacja);
         clearInterval(animacja2);
         clearInterval(animacja3);
-        clearInterval(animacja4);
         kierunekX = 0;
         kierunekY = 0;
         wynik = 0;
@@ -123,14 +121,14 @@ function nowaGra()
         animacja =setInterval(kierunki, 150 / szybkosc.value);
         animacja2 = setInterval(kolizja, 150 / szybkosc.value);
         animacja3 = setInterval(jedzenie, 150 / szybkosc.value);
-        animacja4 = setInterval(nowy_ogon, 150 / szybkosc.value);
         rank.id = "rank";    
         plansza.id="plansza";
         plansza.style.width=wielkosc.value +"px";
         plansza.style.height=wielkosc.value +"px";
         plansza.innerHTML="";
         main.appendChild(plansza);
-        main.appendChild(rank);     
+        main.appendChild(rank);
+        ranking();
         robak = document.createElement('div');
         robak.id = "wonsz";
         robak.style.width=grubosc.value +"px";
@@ -138,7 +136,7 @@ function nowaGra()
         plansza.appendChild(robak);
         document.addEventListener('keydown', ruch);      
         robak = document.getElementById("wonsz");
-        plansza = document.getElementById("plansza"); 
+        plansza = document.getElementById("plansza");
         randomJablko();  
 }
 
@@ -191,6 +189,7 @@ function randomJablko()
     y = parseInt(Math.random()*wielkosc.value/grubosc.value)*grubosc.value + plansza.offsetTop+3;
 	
     x = parseInt(Math.random()*wielkosc.value/grubosc.value)*grubosc.value + plansza.offsetLeft+3;
+    //sprawdz();
     
 	jablko = document.createElement('div');
 	jablko.id = "jablko";
@@ -198,9 +197,43 @@ function randomJablko()
 	jablko.style.left = x + "px";
 	jablko.style.width=grubosc.value +"px";
 	jablko.style.height=grubosc.value +"px";
-    plansza.appendChild(jablko);	
+	/*if(czy_ogon == true)
+	{
+		for (let i = 0; i<el.length; i++)
+		{
+			if(el[i].style.top == jablko.style.top && el[i].style.left == jablko.style.left)
+			{
+				randomJablko();
+			}
+			else
+				plansza.appendChild(jablko);	
+		}
+	}
+	else*/
+		plansza.appendChild(jablko);	
 		
 }
+
+/*function sprawdz()
+{
+	if(czy_wonsz == true)
+	{
+        if(czy_ogon ==  true)
+        {    
+            for (let i = 0; i<el.length; i++)
+            {
+                if(parseFloat(el[i].style.top) == y && parseFloat(el[i].style.left) == x)
+                {
+                    randomJablko();
+                }
+            }
+        }
+        else
+            if(parseFloat(robak.style.top) == y && parseFloat(robak.style.left) == x)
+                randomJablko();
+	}
+}
+*/
 
 function jedzenie() 
 {
@@ -220,6 +253,13 @@ function jedzenie()
         randomJablko();	
 	}
 }
+//let o = 0;
+//let animacja4 = setInterval(obrot, 20);
+//function obrot()
+//{
+//	jablko.style.transform = "rotate("+o+"deg)";
+//	o+=10;
+//}
 
 
 

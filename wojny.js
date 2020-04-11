@@ -1,4 +1,4 @@
-let p1, p2, plansza, jablko, strona_p1, strona_p2, kierunek_p1Y, kierunek_p2Y, kierunek_p1X, kierunek_p2X, czy_moze_zmienic_kierunek_p1, czy_moze_zmienic_kierunek_p2, animacja, animacja2;
+let p1, p2, plansza, jablko, strona_p1, strona_p2, kierunek_p1Y, kierunek_p2Y, kierunek_p1X, kierunek_p2X, czy_moze_zmienic_kierunek_p1, czy_moze_zmienic_kierunek_p2, animacja, animacja2, animacja3, el_p1, el_p2;
 document.addEventListener("DOMContentLoaded", function(){ 
     restart.addEventListener("click", nowaGra);
     plansza = document.createElement('div');
@@ -67,8 +67,43 @@ function p2_ruch(event)
         czy_moze_zmienic_kierunek_p2 = false;      
     }
 }
+
+function nowy_ogon_p1()
+{
+	el_p1 =document.querySelectorAll(".ogon_p1");
+	if(el_p1.length>0)
+	{
+		for(i =el_p1.length-1; i>0; i--)
+		{
+			el_p1[i].style.top =el_p1[i-1].style.top;
+			el_p1[i].style.left =el_p1[i-1].style.left;
+		}
+		el_p1[0].style.top =p1.style.top;
+		el_p1[0].style.left =p1.style.left;
+        
+	}
+}
+
+function nowy_ogon_p2()
+{
+	el_p2 =document.querySelectorAll(".ogon_p2");
+	if(el_p2.length>0)
+	{
+		for(i =el_p2.length-1; i>0; i--)
+		{
+			el_p2[i].style.top =el_p2[i-1].style.top;
+			el_p2[i].style.left =el_p2[i-1].style.left;
+		}
+		el_p2[0].style.top =p2.style.top;
+		el_p2[0].style.left =p2.style.left;
+        
+	}
+}
+
 function kierunki()
 { 
+    nowy_ogon_p1();
+    nowy_ogon_p2();
     let top_p2 = p2.offsetTop;
     let left_p2 = p2.offsetLeft;
     let top_p1 = p1.offsetTop;
@@ -79,13 +114,14 @@ function kierunki()
     p2.style.left = left_p2+kierunek_p2X+"px";
     czy_moze_zmienic_kierunek_p1 = true;
     czy_moze_zmienic_kierunek_p2 = true;
-    console.log(p2.style.left);
-    console.log(p1.style.left);
+    console.log(p1.offsetTop, p1.offsetLeft);
+    console.log(jablko.offsetTop, jablko.offsetLeft);
 }  
 function nowaGra()
 {
     clearInterval(animacja);
     clearInterval(animacja2);
+    clearInterval(animacja3);
     kierunek_p1X = 0;
     kierunek_p2X = 0;
     kierunek_p1Y = 0;
@@ -94,6 +130,7 @@ function nowaGra()
     strona_p2 = "";
     animacja = setInterval(kierunki, 150);
     animacja2 = setInterval(kolizja, 150);
+    animacja3 = setInterval(jedzenie, 150);
     document.addEventListener('keydown', p1_ruch);
     document.addEventListener('keydown', p2_ruch);
     plansza.id = "plansza";
@@ -129,6 +166,43 @@ function kolizja()
         p2.remove();
         nowaGra();
     }
+    
+    for(i=1; i<el_p1.length; i++)
+    {
+		if(el_p1[i].offsetTop == p1.offsetTop && el_p1[i].offsetLeft == p1.offsetLeft)
+		{
+            alert("Gracz czerwony się zakręcił...");
+            p1.remove();
+            p2.remove();
+            nowaGra();          
+		}
+        else if(el_p1[i].offsetTop == p2.offsetTop && el_p1[i].offsetLeft == p2.offsetLeft)
+        {
+            alert("Gracz zielony przegrywa.");
+            p1.remove();
+            p2.remove();
+            nowaGra(); 
+        }
+    }
+    
+    for(i=1; i<el_p2.length; i++)
+    {
+		if(el_p2[i].offsetTop == p2.offsetTop && el_p2[i].offsetLeft == p2.offsetLeft)
+		{
+            alert("Gracz zielony się zakręcił...");
+            p1.remove();
+            p2.remove();
+            nowaGra();
+		}
+        else if(el_p2[i].offsetTop == p1.offsetTop && el_p2[i].offsetLeft == p1.offsetLeft)
+        {
+            alert("Gracz czerwony przegrywa.");
+            p1.remove();
+            p2.remove();
+            nowaGra(); 
+        }
+    }
+    
 }
 
 function randomJablko()
@@ -146,5 +220,35 @@ function randomJablko()
 	jablko.style.height=30 +"px";
     plansza.appendChild(jablko);	
 		
+}
+
+function jedzenie() 
+{
+    if(p1.offsetTop == jablko.offsetTop && p1.offsetLeft == jablko.offsetLeft)
+    {
+		p1.style.top+=30+"px";
+		jablko.remove();
+		ogon_p1 = document.createElement('div');
+		ogon_p1.className = 'ogon_p1';
+		ogon_p1.style.width = 30 + "px";
+		ogon_p1.style.height = 30 + "px";
+		ogon_p1.style.top = p1.style.top;
+		ogon_p1.style.left = p1.style.left;
+		plansza.appendChild(ogon_p1);
+        randomJablko();	
+	}
+    else if(p2.offsetTop == jablko.offsetTop && p2.offsetLeft == jablko.offsetLeft)
+    {
+        p2.style.top+=30+"px";
+		jablko.remove();
+		ogon_p2 = document.createElement('div');
+		ogon_p2.className = 'ogon_p2';
+		ogon_p2.style.width = 30 + "px";
+		ogon_p2.style.height = 30 + "px";
+		ogon_p2.style.top = p2.style.top;
+		ogon_p2.style.left = p2.style.left;
+		plansza.appendChild(ogon_p2);
+        randomJablko();	
+    }
 }
 
