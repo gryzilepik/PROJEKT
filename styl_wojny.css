@@ -30,6 +30,8 @@ html,body{
     position: absolute;
     margin: 0;
     border-radius: 10px;
+    color: red;
+    text-align: center;
 }
 
 #p2{
@@ -39,6 +41,18 @@ html,body{
     margin: 0;
     border-radius: 10px;
     position: absolute;
+    color: limegreen;
+    text-align: center;
+}
+
+#jablko{
+    width: 30px;
+    height: 30px;
+    background-image: url("jablko2.png");
+    margin: 0;
+    position: absolute;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 #main{

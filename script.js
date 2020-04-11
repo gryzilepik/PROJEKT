@@ -66,13 +66,12 @@ function nowy_ogon()
 
 function kierunki()
 {   
-	nowy_ogon();
+	
     let top = robak.offsetTop;
     let left = robak.offsetLeft;  
     robak.style.top = top+kierunekY+"px";
     robak.style.left = left+kierunekX+"px";
     czy_moze_zmienic_kierunek = true;
-    console.log(plansza.offsetHeight + plansza.offsetTop - robak.offsetTop);
 }  
 
 function dobazy()
@@ -116,6 +115,7 @@ function nowaGra()
         clearInterval(animacja);
         clearInterval(animacja2);
         clearInterval(animacja3);
+        clearInterval(animacja4);
         kierunekX = 0;
         kierunekY = 0;
         wynik = 0;
@@ -123,14 +123,14 @@ function nowaGra()
         animacja =setInterval(kierunki, 150 / szybkosc.value);
         animacja2 = setInterval(kolizja, 150 / szybkosc.value);
         animacja3 = setInterval(jedzenie, 150 / szybkosc.value);
+        animacja4 = setInterval(nowy_ogon, 150 / szybkosc.value);
         rank.id = "rank";    
         plansza.id="plansza";
         plansza.style.width=wielkosc.value +"px";
         plansza.style.height=wielkosc.value +"px";
         plansza.innerHTML="";
         main.appendChild(plansza);
-        main.appendChild(rank);
-        
+        main.appendChild(rank);     
         robak = document.createElement('div');
         robak.id = "wonsz";
         robak.style.width=grubosc.value +"px";
@@ -138,8 +138,7 @@ function nowaGra()
         plansza.appendChild(robak);
         document.addEventListener('keydown', ruch);      
         robak = document.getElementById("wonsz");
-        plansza = document.getElementById("plansza");
-         console.log(plansza.offsetTop);   
+        plansza = document.getElementById("plansza"); 
         randomJablko();  
 }
 

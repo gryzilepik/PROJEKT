@@ -101,18 +101,17 @@ function nowaGra()
     plansza.innerHTML = "";
     p1 = document.createElement('div');
     p1.id = "p1";
+    p1.innerHTML = "P1";
     plansza.appendChild(p1);
     p2 = document.createElement('div');
     p2.id = "p2";
+    p2.innerHTML = "P2";
     p2.style.left = plansza.offsetLeft + plansza.offsetWidth - 33;
     p2.style.top = plansza.offsetTop + plansza.offsetHeight - 33;
     plansza.appendChild(p2);
     randomJablko();
 }
 
-function przegrana(){
-    
-}
 
 function kolizja()
 {
@@ -148,3 +147,4 @@ function randomJablko()
     plansza.appendChild(jablko);	
 		
 }
+
