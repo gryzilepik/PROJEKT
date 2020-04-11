@@ -98,6 +98,7 @@ function nowaGra()
     document.addEventListener('keydown', p2_ruch);
     plansza.id = "plansza";
     main.appendChild(plansza);
+    plansza.innerHTML = "";
     p1 = document.createElement('div');
     p1.id = "p1";
     plansza.appendChild(p1);
@@ -106,7 +107,13 @@ function nowaGra()
     p2.style.left = plansza.offsetLeft + plansza.offsetWidth - 33;
     p2.style.top = plansza.offsetTop + plansza.offsetHeight - 33;
     plansza.appendChild(p2);
+    randomJablko();
 }
+
+function przegrana(){
+    
+}
+
 function kolizja()
 {
     if((p1.offsetTop - plansza.offsetTop < 3 && strona_p1 == "GORA") || (p1.offsetLeft - plansza.offsetLeft < 3 && strona_p1 == "LEWO") || (plansza.offsetHeight + plansza.offsetTop - p1.offsetTop <= 3 && strona_p1 == "DOL") || (plansza.offsetWidth + plansza.offsetLeft - p1.offsetLeft <= 3 && strona_p1 == "PRAWO"))
@@ -123,4 +130,21 @@ function kolizja()
         p2.remove();
         nowaGra();
     }
+}
+
+function randomJablko()
+{  
+
+    y = parseInt(Math.random()*750/30)*30 + plansza.offsetTop+3;
+	
+    x = parseInt(Math.random()*750/30)*30 + plansza.offsetLeft+3;
+    
+	jablko = document.createElement('div');
+	jablko.id = "jablko";
+	jablko.style.top = y + "px";
+	jablko.style.left = x + "px";
+	jablko.style.width=30 +"px";
+	jablko.style.height=30 +"px";
+    plansza.appendChild(jablko);	
+		
 }
