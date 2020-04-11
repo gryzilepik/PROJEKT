@@ -72,13 +72,11 @@ function kierunki()
     robak.style.top = top+kierunekY+"px";
     robak.style.left = left+kierunekX+"px";
     czy_moze_zmienic_kierunek = true;
+    console.log(plansza.offsetHeight + plansza.offsetTop - robak.offsetTop);
 }  
 
 function dobazy()
 {
-    clearInterval(animacja3);
-    clearInterval(animacja2);
-    clearInterval(animacja);
     koniec  = prompt("Przegrana, twój wynik to: "+wynik+"\nPodaj nazwę gracza:", "Nazwa gracza");
     if(koniec != null)
     {
@@ -114,13 +112,14 @@ function ranking()
 
 function nowaGra()
 {       
-        kierunekX = 0;
-        kierunekY = 0;
-        wynik = 0;
-        strona = "";
+        ranking();
         clearInterval(animacja);
         clearInterval(animacja2);
         clearInterval(animacja3);
+        kierunekX = 0;
+        kierunekY = 0;
+        wynik = 0;
+        strona = "";     
         animacja =setInterval(kierunki, 150 / szybkosc.value);
         animacja2 = setInterval(kolizja, 150 / szybkosc.value);
         animacja3 = setInterval(jedzenie, 150 / szybkosc.value);
@@ -131,13 +130,12 @@ function nowaGra()
         plansza.innerHTML="";
         main.appendChild(plansza);
         main.appendChild(rank);
-        ranking();
+        
         robak = document.createElement('div');
         robak.id = "wonsz";
         robak.style.width=grubosc.value +"px";
         robak.style.height=grubosc.value +"px";
         plansza.appendChild(robak);
-        czy_wonsz = true;
         document.addEventListener('keydown', ruch);      
         robak = document.getElementById("wonsz");
         plansza = document.getElementById("plansza");
@@ -173,9 +171,12 @@ function kolizja()
         plansza.style.border = "3px solid black";
 		if((robak.offsetTop - plansza.offsetTop < 3 && strona == "GORA") || (robak.offsetLeft - plansza.offsetLeft < 3 && strona == "LEWO") || (plansza.offsetHeight + plansza.offsetTop - robak.offsetTop <= 3 && strona == "DOL") || (plansza.offsetWidth + plansza.offsetLeft - robak.offsetLeft <= 3 && strona == "PRAWO"))
 		{
+            
 			dobazy();
+            
 		}
 	}
+    
 	for(i=1; i<el.length; i++)
 		if (el[i].offsetTop == robak.offsetTop && el[i].offsetLeft == robak.offsetLeft)
 		{
@@ -251,7 +252,6 @@ function jedzenie()
 		ogon.style.top = robak.style.top;
 		ogon.style.left = robak.style.left;
 		plansza.appendChild(ogon);
-        czy_ogon = true;
         randomJablko();	
 	}
 }

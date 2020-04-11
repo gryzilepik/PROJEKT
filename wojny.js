@@ -1,14 +1,8 @@
 let p1, p2, plansza, jablko, strona_p1, strona_p2, kierunek_p1Y, kierunek_p2Y, kierunek_p1X, kierunek_p2X, czy_moze_zmienic_kierunek_p1, czy_moze_zmienic_kierunek_p2, animacja, animacja2;
-
 document.addEventListener("DOMContentLoaded", function(){ 
-    
     restart.addEventListener("click", nowaGra);
     plansza = document.createElement('div');
-    
 });
-
-
-
 function p1_ruch(event)
 {    
     var klawisz = event.key; 
@@ -18,7 +12,6 @@ function p1_ruch(event)
         kierunek_p1X = -30;
         kierunek_p1Y = 0;
         czy_moze_zmienic_kierunek_p1 = false;
-        
     }
     else if (klawisz == 's' && strona_p1 != "GORA" && czy_moze_zmienic_kierunek_p1 == true)
     {
@@ -41,9 +34,7 @@ function p1_ruch(event)
         kierunek_p1X = 0; 
         czy_moze_zmienic_kierunek_p1 = false;      
     }
-    
 }
-
 function p2_ruch(event)
 {    
     var klawisz = event.key; 
@@ -53,7 +44,6 @@ function p2_ruch(event)
         kierunek_p2X = -30;
         kierunek_p2Y = 0;
         czy_moze_zmienic_kierunek_p2 = false;
-        
     }
     else if (klawisz == 'ArrowDown' && strona_p2 != "GORA" && czy_moze_zmienic_kierunek_p2 == true)
     {
@@ -76,10 +66,7 @@ function p2_ruch(event)
         kierunek_p2X = 0; 
         czy_moze_zmienic_kierunek_p2 = false;      
     }
-    
 }
-
-
 function kierunki()
 { 
     let top_p2 = p2.offsetTop;
@@ -95,7 +82,6 @@ function kierunki()
     console.log(p2.style.left);
     console.log(p1.style.left);
 }  
-
 function nowaGra()
 {
     clearInterval(animacja);
@@ -121,7 +107,6 @@ function nowaGra()
     p2.style.top = plansza.offsetTop + plansza.offsetHeight - 33;
     plansza.appendChild(p2);
 }
-
 function kolizja()
 {
     if((p1.offsetTop - plansza.offsetTop < 3 && strona_p1 == "GORA") || (p1.offsetLeft - plansza.offsetLeft < 3 && strona_p1 == "LEWO") || (plansza.offsetHeight + plansza.offsetTop - p1.offsetTop <= 3 && strona_p1 == "DOL") || (plansza.offsetWidth + plansza.offsetLeft - p1.offsetLeft <= 3 && strona_p1 == "PRAWO"))
@@ -139,4 +124,3 @@ function kolizja()
         nowaGra();
     }
 }
-
