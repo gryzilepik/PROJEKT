@@ -1,7 +1,10 @@
-let p1, p2, plansza, jablko, strona_p1, strona_p2, kierunek_p1Y, kierunek_p2Y, kierunek_p1X, kierunek_p2X, czy_moze_zmienic_kierunek_p1, czy_moze_zmienic_kierunek_p2, animacja, animacja2, animacja3, el_p1, el_p2;
+let p1, p2, plansza, jablko, strona_p1, strona_p2, kierunek_p1Y, kierunek_p2Y, kierunek_p1X, kierunek_p2X, czy_moze_zmienic_kierunek_p1, czy_moze_zmienic_kierunek_p2, animacja, animacja2, animacja3, animacja4, el_p1, el_p2;
 document.addEventListener("DOMContentLoaded", function(){ 
     restart.addEventListener("click", nowaGra);
     plansza = document.createElement('div');
+    document.addEventListener('keydown', przyspieszenie);
+    document.addEventListener('keyup', n_przyspieszenie);
+
 });
 function p1_ruch(event)
 {    
@@ -100,37 +103,75 @@ function nowy_ogon_p2()
 	}
 }
 
-function kierunki()
+function przyspieszenie(e)
+{
+    if(e.key == " ")
+    {
+        clearInterval(animacja);
+        animacja = setInterval(kierunki_p1, 100);   
+    }
+    
+    if(e.key == "l")
+    {
+        clearInterval(animacja2);
+        animacja2 = setInterval(kierunki_p2, 100);
+    }
+}
+
+function n_przyspieszenie(e)
+{
+    if(e.key == " ")
+    {
+        clearInterval(animacja);
+        animacja = setInterval(kierunki_p1, 150);   
+    }
+    
+    if(e.key == "l")
+    {
+        clearInterval(animacja2);
+        animacja2 = setInterval(kierunki_p2, 150);
+    }
+}
+
+
+
+
+function kierunki_p1()
 { 
     nowy_ogon_p1();
-    nowy_ogon_p2();
-    let top_p2 = p2.offsetTop;
-    let left_p2 = p2.offsetLeft;
     let top_p1 = p1.offsetTop;
     let left_p1 = p1.offsetLeft;  
     p1.style.top = top_p1+kierunek_p1Y+"px";
     p1.style.left = left_p1+kierunek_p1X+"px";
+    czy_moze_zmienic_kierunek_p1 = true;
+}  
+
+function kierunki_p2()
+{ 
+    nowy_ogon_p2();
+    let top_p2 = p2.offsetTop;
+    let left_p2 = p2.offsetLeft; 
     p2.style.top = top_p2+kierunek_p2Y+"px";
     p2.style.left = left_p2+kierunek_p2X+"px";
-    czy_moze_zmienic_kierunek_p1 = true;
     czy_moze_zmienic_kierunek_p2 = true;
-    console.log(p1.offsetTop, p1.offsetLeft);
-    console.log(jablko.offsetTop, jablko.offsetLeft);
 }  
+
 function nowaGra()
 {
     clearInterval(animacja);
     clearInterval(animacja2);
     clearInterval(animacja3);
+    clearInterval(animacja4);
     kierunek_p1X = 0;
     kierunek_p2X = 0;
     kierunek_p1Y = 0;
     kierunek_p2Y = 0;
     strona_p1 = "";
     strona_p2 = "";
-    animacja = setInterval(kierunki, 150);
-    animacja2 = setInterval(kolizja, 150);
-    animacja3 = setInterval(jedzenie, 150);
+    animacja = setInterval(kierunki_p1, 150);
+    animacja2 = setInterval(kierunki_p2, 150);
+    animacja3 = setInterval(kolizja, 150);
+    animacja4 = setInterval(jedzenie, 150);
     document.addEventListener('keydown', p1_ruch);
     document.addEventListener('keydown', p2_ruch);
     plansza.id = "plansza";
@@ -161,7 +202,7 @@ function kolizja()
     }
     else if((p2.offsetTop - plansza.offsetTop < 3 && strona_p2 == "GORA") || (p2.offsetLeft - plansza.offsetLeft < 3 && strona_p2 == "LEWO") || (plansza.offsetHeight + plansza.offsetTop - p2.offsetTop <= 3 && strona_p2 == "DOL") || (plansza.offsetWidth + plansza.offsetLeft - p2.offsetLeft <= 3 && strona_p2 == "PRAWO"))
     {
-        alert("Gracz zielony chciał uciec z pola bitwy.")
+        alert("Gracz niebieski chciał uciec z pola bitwy.")
         p1.remove();
         p2.remove();
         nowaGra();
@@ -178,7 +219,7 @@ function kolizja()
 		}
         else if(el_p1[i].offsetTop == p2.offsetTop && el_p1[i].offsetLeft == p2.offsetLeft)
         {
-            alert("Gracz zielony przegrywa.");
+            alert("Gracz niebieski przegrywa.");
             p1.remove();
             p2.remove();
             nowaGra(); 
@@ -189,7 +230,7 @@ function kolizja()
     {
 		if(el_p2[i].offsetTop == p2.offsetTop && el_p2[i].offsetLeft == p2.offsetLeft)
 		{
-            alert("Gracz zielony się zakręcił...");
+            alert("Gracz niebieski się zakręcił...");
             p1.remove();
             p2.remove();
             nowaGra();

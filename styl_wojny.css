@@ -32,6 +32,7 @@ html,body{
     border-radius: 10px;
     color: red;
     text-align: center;
+    font-size: 24px;
 }
 
 #p2{
@@ -41,8 +42,9 @@ html,body{
     margin: 0;
     border-radius: 10px;
     position: absolute;
-    color: limegreen;
+    color: dodgerblue;
     text-align: center;
+    font-size: 24px;
 }
 
 #jablko{
@@ -61,7 +63,7 @@ html,body{
     background-color: #112B08;
     position: absolute;
     margin: 0;     
-    box-shadow:0 0 6px white;
+    box-shadow:0 0 6px red;
     border-radius: 10px;
 }
 
@@ -71,7 +73,7 @@ html,body{
     background-color: #112B08;
     position: absolute;
     margin: 0;     
-    box-shadow:0 0 6px white;
+    box-shadow:0 0 6px dodgerblue;
     border-radius: 10px;
 }
 
