@@ -1,10 +1,7 @@
 let p1, p2, plansza, jablko, strona_p1, strona_p2, kierunek_p1Y, kierunek_p2Y, kierunek_p1X, kierunek_p2X, czy_moze_zmienic_kierunek_p1, czy_moze_zmienic_kierunek_p2, animacja, animacja2, animacja3, animacja4, el_p1, el_p2;
 document.addEventListener("DOMContentLoaded", function(){ 
-    restart.addEventListener("click", nowaGra);
+    restart.addEventListener("click", nowaGra);  
     plansza = document.createElement('div');
-    document.addEventListener('keydown', przyspieszenie);
-    document.addEventListener('keyup', n_przyspieszenie);
-
 });
 function p1_ruch(event)
 {    
@@ -105,36 +102,51 @@ function nowy_ogon_p2()
 
 function przyspieszenie(e)
 {
-    if(e.key == " ")
+    if(e.key == "e")
     {
         clearInterval(animacja);
-        animacja = setInterval(kierunki_p1, 100);   
+        clearInterval(animacja3);
+        clearInterval(animacja4);
+        animacja = setInterval(kierunki_p1, 100); 
+        animacja3 = setInterval(kolizja, 100);   
+        animacja4 = setInterval(jedzenie, 100);
+        document.removeEventListener('keydown', przyspieszenie);
     }
-    
     if(e.key == "l")
     {
         clearInterval(animacja2);
+        clearInterval(animacja3);
+        clearInterval(animacja4);
         animacja2 = setInterval(kierunki_p2, 100);
+        animacja3 = setInterval(kolizja, 100);
+        animacja4 = setInterval(jedzenie, 100);
+        document.removeEventListener('keydown', przyspieszenie);
     }
 }
 
 function n_przyspieszenie(e)
 {
-    if(e.key == " ")
+    if(e.key == "e")
     {
         clearInterval(animacja);
+        clearInterval(animacja3);
+        clearInterval(animacja4);
         animacja = setInterval(kierunki_p1, 150);   
+        animacja3 = setInterval(kolizja, 150);   
+        animacja4 = setInterval(jedzenie, 150);   
+        document.addEventListener('keydown', przyspieszenie);
     }
-    
     if(e.key == "l")
     {
         clearInterval(animacja2);
+        clearInterval(animacja3);
+        clearInterval(animacja4);
         animacja2 = setInterval(kierunki_p2, 150);
+        animacja3 = setInterval(kolizja, 150);
+        animacja4 = setInterval(jedzenie, 150);
+        document.addEventListener('keydown', przyspieszenie);
     }
 }
-
-
-
 
 function kierunki_p1()
 { 
@@ -158,10 +170,13 @@ function kierunki_p2()
 
 function nowaGra()
 {
+    document.getElementById('sterowanie').style.visibility = "visible";
     clearInterval(animacja);
     clearInterval(animacja2);
     clearInterval(animacja3);
     clearInterval(animacja4);
+    document.addEventListener('keydown', przyspieszenie);
+    document.addEventListener('keyup', n_przyspieszenie);   
     kierunek_p1X = 0;
     kierunek_p2X = 0;
     kierunek_p1Y = 0;

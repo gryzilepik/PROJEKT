@@ -182,60 +182,7 @@ function kolizja()
 		}
 }
   
-
-function randomJablko()
-{  
-
-    y = parseInt(Math.random()*wielkosc.value/grubosc.value)*grubosc.value + plansza.offsetTop+3;
-	
-    x = parseInt(Math.random()*wielkosc.value/grubosc.value)*grubosc.value + plansza.offsetLeft+3;
-    //sprawdz();
-    
-	jablko = document.createElement('div');
-	jablko.id = "jablko";
-	jablko.style.top = y + "px";
-	jablko.style.left = x + "px";
-	jablko.style.width=grubosc.value +"px";
-	jablko.style.height=grubosc.value +"px";
-	/*if(czy_ogon == true)
-	{
-		for (let i = 0; i<el.length; i++)
-		{
-			if(el[i].style.top == jablko.style.top && el[i].style.left == jablko.style.left)
-			{
-				randomJablko();
-			}
-			else
-				plansza.appendChild(jablko);	
-		}
-	}
-	else*/
-		plansza.appendChild(jablko);	
-		
-}
-
-/*function sprawdz()
-{
-	if(czy_wonsz == true)
-	{
-        if(czy_ogon ==  true)
-        {    
-            for (let i = 0; i<el.length; i++)
-            {
-                if(parseFloat(el[i].style.top) == y && parseFloat(el[i].style.left) == x)
-                {
-                    randomJablko();
-                }
-            }
-        }
-        else
-            if(parseFloat(robak.style.top) == y && parseFloat(robak.style.left) == x)
-                randomJablko();
-	}
-}
-*/
-
-function jedzenie() 
+function jedzenie()
 {
     if(robak.offsetTop == jablko.offsetTop && robak.offsetLeft == jablko.offsetLeft)
     {
@@ -250,18 +197,48 @@ function jedzenie()
 		ogon.style.top = robak.style.top;
 		ogon.style.left = robak.style.left;
 		plansza.appendChild(ogon);
-        randomJablko();	
+        czy_ogon =true;
+        randomJablko();
 	}
 }
-//let o = 0;
-//let animacja4 = setInterval(obrot, 20);
-//function obrot()
-//{
-//	jablko.style.transform = "rotate("+o+"deg)";
-//	o+=10;
-//}
 
-
-
-
+function randomJablko()
+{
+    y = parseInt(Math.random()*wielkosc.value/grubosc.value)*grubosc.value + plansza.offsetTop+3;
+    x = parseInt(Math.random()*wielkosc.value/grubosc.value)*grubosc.value + plansza.offsetLeft+3;
+	jablko = document.createElement('div');
+	jablko.id = "jablko";
+	jablko.style.top = y + "px";
+	jablko.style.left = x + "px";
+	jablko.style.width=grubosc.value +"px";
+	jablko.style.height=grubosc.value +"px";
+    let pom =true;
+    if(robak.offsetTop == jablko.offsetTop && robak.offsetLeft == jablko.offsetLeft)
+    {
+        pom = false;
+    }
+    else
+    {
+        if(czy_ogon == true)
+        {
+            for (let i = 0; i<el.length; i++)
+            {
+                if((el[i].style.top == jablko.style.top && el[i].style.left == jablko.style.left) || (robak.offsetTop == jablko.offsetTop && robak.offsetLeft == jablko.offsetLeft))
+                {
+                    pom =false;
+                    break;
+                }
+            }
+        }
+    }
+        if(pom)
+        {
+            plansza.appendChild(jablko);
+        } 
+        else 
+        {
+            randomJablko();
+        }
+    
+}
 
