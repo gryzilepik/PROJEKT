@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Czas generowania: 11 Kwi 2020, 18:36
+-- Czas generowania: 15 Kwi 2020, 13:45
 -- Wersja serwera: 10.1.36-MariaDB
 -- Wersja PHP: 7.2.10
 
@@ -69,7 +69,78 @@ INSERT INTO `tabela` (`nazwa_gracza`, `wynik`) VALUES
 ('Nazwa gracza', 130),
 ('OK', 105),
 ('NIe', 100),
-('JUZ', 140);
+('JUZ', 140),
+('PRZEGRALEM', 105),
+('DASDSDASD', 140),
+('400', 400),
+('Nazwa gracza', 135),
+('Nazwa gracza', 185),
+('DOMINIK', 150),
+('Nazwa gracza', 160),
+('Nazwa gracza', 220),
+('Nazwa gracza', 5),
+('Nazwa gracza', 10),
+('DHAHSD', 145),
+('BARTEK', 150);
+
+-- --------------------------------------------------------
+
+--
+-- Struktura tabeli dla tabeli `tabela2`
+--
+
+CREATE TABLE `tabela2` (
+  `nazwa_gracza` text COLLATE utf8_polish_ci,
+  `wynik` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
+
+--
+-- Zrzut danych tabeli `tabela2`
+--
+
+INSERT INTO `tabela2` (`nazwa_gracza`, `wynik`) VALUES
+('Bartek', 15),
+('Nazwa gracza', 5),
+('Nazwa gracza', 5),
+('Nazwa gracza', 5),
+('Nazwa gracza', 10),
+('Nazwa gracza', 5),
+('Nazwa gracza', 5),
+('Nazwa gracza', 10),
+('Ola', 10),
+('CZESC', 5),
+('sdgfsdg', 10);
+
+-- --------------------------------------------------------
+
+--
+-- Struktura tabeli dla tabeli `tabela3`
+--
+
+CREATE TABLE `tabela3` (
+  `nazwa_gracza` text COLLATE utf8_polish_ci,
+  `wynik` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
+
+--
+-- Zrzut danych tabeli `tabela3`
+--
+
+INSERT INTO `tabela3` (`nazwa_gracza`, `wynik`) VALUES
+('Nazwa gracza', 5),
+('Nazwa gracza', 10),
+('Nazwa gracza', 0),
+('Nazwa gracza', 0),
+('Nazwa gracza', 0),
+('Nazwa gracza', 0),
+('Nazwa gracza', 0),
+('Nazwa gracza', 0),
+('Nazwa gracza', 0),
+('gsdgsdg', 5),
+('tdasf', 10),
+('fdjkfjkfghk', 5),
+('OLABARTEK', 10),
+('radgfsdghdsfhd', 5);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -2,6 +2,7 @@ let kierunekX = 0;
 let kierunekY = 0;
 let robak, animacja, animacja2, animacja3, animacja4, strona, x, y, jablko, el, koniec, b, czy_wonsz = false, czy_ogon = false, czy_moze_zmienic_kierunek = true, przycisk;
 let wynik = 0;
+let wlk;
 
 document.addEventListener("DOMContentLoaded", function(){ 
     
@@ -10,7 +11,6 @@ document.addEventListener("DOMContentLoaded", function(){
     plansza = document.createElement('div');
     rank.id = "rank";
     main.appendChild(rank);
-    ranking();
     
 });
 function ruch(event)
@@ -76,31 +76,40 @@ function kierunki()
 
 function dobazy()
 {
-    koniec  = prompt("Przegrana, twój wynik to: "+wynik+"\nPodaj nazwę gracza:", "Nazwa gracza");
-    if(koniec != null)
+    if((document.getElementById("tab_rank_tbody").children.length < 12) || (wynik > parseFloat(document.getElementById("tab_rank_tbody").childNodes[10].lastChild.innerHTML)))
     {
-        var polaczenie = new XMLHttpRequest();
-        polaczenie.open("GET", "zapis.php?nazwa_gracza="+koniec+"&wynik="+wynik);
-        polaczenie.send();
-        polaczenie.onreadystatechange =function(){
-            if(polaczenie.readyState ==4 && polaczenie.status == 200)
-                console.log(polaczenie.response);
-        };
-        ranking();
-        przegrana();
-        
+        koniec  = prompt("Przegrana, twój wynik to: "+wynik+"\nPodaj nazwę gracza:", "Nazwa gracza");
+        if(koniec != null)
+        {
+            var polaczenie = new XMLHttpRequest();
+            polaczenie.open("GET", "zapis.php?nazwa_gracza="+koniec+"&wynik="+wynik+"&wlk="+wlk);
+            polaczenie.send();
+            polaczenie.onreadystatechange =function(){
+                if(polaczenie.readyState ==4 && polaczenie.status == 200)
+                    console.log(polaczenie.response);
+            };
+            ranking();
+            przegrana();
+
+        }
+        else
+        {
+            ranking();
+            przegrana();
+        }
     }
     else
     {
         ranking();
         przegrana();
-    }
+    } 
 }
 
 function ranking()
 {
+    
    var polaczenie2 = new XMLHttpRequest();
-    polaczenie2.open("GET", "odczyt.php");
+    polaczenie2.open("GET", "odczyt.php?wlk="+wlk);
     polaczenie2.send();
     polaczenie2.onreadystatechange  =function(){
         if(polaczenie2.readyState ==4 && polaczenie2.status == 200)
@@ -111,6 +120,7 @@ function ranking()
 
 function nowaGra()
 {       
+    wlk = parseFloat(wielkosc.value);
         clearInterval(animacja);
         clearInterval(animacja2);
         clearInterval(animacja3);
